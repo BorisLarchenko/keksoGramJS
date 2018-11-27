@@ -17,7 +17,7 @@ gulp.task('browserSync', function() {
       baseDir: './build'
     },
   });
-  gulp.watch("./source/*.html", ['copy-html']);
+  gulp.watch("./source/*.html", ['copy-html-js']);
 });
 
 gulp.task('clean', function () {
