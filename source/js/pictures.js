@@ -30,7 +30,7 @@ function generateData() {
 
   for (var i = 0; i<=25; i++) {
     arrayData[i] = {
-      url: "photos/" +i+".jpg",
+      url: "photos/" +(i+1)+".jpg",
       likes: genRandNumber(15, 200),
       comments: commentsData[genRandNumber(0, commentsData.length-1)],
       description: descriptionData[genRandNumber(0, descriptionData.length-1)]
@@ -39,4 +39,25 @@ function generateData() {
 
   }
   return arrayData;
+}
+
+
+function addDatatoElements() {
+  var fragment = document.createDocumentFragment();
+  function creareElement() {
+    var templateSource = document.querySelector('#picture-template');
+    var elementForCreation = templateSource.content.querySelector('.picture');
+    var newElement = elementForCreation.cloneNode(true);
+
+    return newElement;
+  }
+  var myArrayData = generateData(); //Array of objects
+  for (var i = 0;i < myArrayData.length; i++) {
+    var newElem = creareElement();
+    newElem.querySelector('img').src = myArrayData[i].url;
+    newElem.querySelector('.picture-comments').textContent = myArrayData[i].comments;
+    newElem.querySelector('.picture-likes').textContent = myArrayData[i].likes;
+    fragment.appendChild(newElem);
+  }
+  return fragment;
 }
