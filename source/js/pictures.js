@@ -61,3 +61,11 @@ function addDatatoElements() {
   }
   return fragment;
 }
+
+function insertElements() {
+  var myContaner = document.querySelector('.pictures');
+  var myFragment = addDatatoElements();
+  myContaner.appendChild(myFragment);
+}
+
+insertElements();
