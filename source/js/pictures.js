@@ -35,7 +35,7 @@ function generateData() {
       comments: commentsData[genRandNumber(0, commentsData.length-1)],
       description: descriptionData[genRandNumber(0, descriptionData.length-1)]
     };
-    console.log(arrayData[i]) ;
+
 
   }
   return arrayData;
