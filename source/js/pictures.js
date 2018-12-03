@@ -32,7 +32,7 @@ function generateData() {
     arrayData[i] = {
       url: "photos/" +(i+1)+".jpg",
       likes: genRandNumber(15, 200),
-      comments: commentsData[genRandNumber(0, commentsData.length-1)],
+      comments: genRandNumber(0, commentsData.length-1),
       description: descriptionData[genRandNumber(0, descriptionData.length-1)]
     };
 
