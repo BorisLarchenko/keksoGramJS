@@ -1,4 +1,5 @@
-function generateData() {
+/*This module generates array with data for pictures gallery*/
+(function generateData() {
   var arrayData = [];
   var commentsData = [
     'Всё отлично!',
@@ -38,9 +39,8 @@ function generateData() {
 
 
   }
-  return arrayData;
-}
-
+  window.myArrayData = arrayData;
+})();
 
 function addDatatoElements() {
   var fragment = document.createDocumentFragment();
@@ -51,7 +51,7 @@ function addDatatoElements() {
 
     return newElement;
   }
-  var myArrayData = generateData(); //Array of objects
+  /*window.myArrayData = generateData(); //Array of objects*/
   for (var i = 0;i < myArrayData.length; i++) {
     var newElem = creareElement();
     newElem.querySelector('img').src = myArrayData[i].url;
@@ -68,4 +68,16 @@ function insertElements() {
   myContaner.appendChild(myFragment);
 }
 
+//==================
+//generate big-picture structure function
+function genBigPicture() {
+  var globalBigPictureContainer = document.querySelector('.big-picture');
+  var bigPicImg = globalBigPictureContainer.querySelector('.big-picture__img img');
+  console.log(bigPicImg);
+  bigPicImg.src = myArrayData[2].url;
+
+}
+//==================
+
 insertElements();
+genBigPicture();
