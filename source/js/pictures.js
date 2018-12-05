@@ -1,4 +1,5 @@
 /*This module generates array with data for pictures gallery*/
+"use strict";
 (function generateData() {
   var arrayData = [];
   var commentsData = [
@@ -23,23 +24,25 @@
     'Вот это тачка!'
   ];
 
-  function genRandNumber(minNum, maxNum) {
-    var rendomNum = Math.random()*(maxNum - minNum)+ minNum;
-    rendomNum = (Math.round(rendomNum));
-    return rendomNum;
-  }
+  window.data = {
+    genRandNumber: function(minNum, maxNum) {
+      var rendomNum = Math.random()*(maxNum - minNum)+ minNum;
+      rendomNum = (Math.round(rendomNum));
+      return rendomNum;
+    },
+    myArrayData: arrayData
+  };
 
   for (var i = 0; i<=25; i++) {
     arrayData[i] = {
       url: "photos/" +(i+1)+".jpg",
-      likes: genRandNumber(15, 200),
-      comments: genRandNumber(0, commentsData.length-1),
-      description: descriptionData[genRandNumber(0, descriptionData.length-1)]
+      likes: window.data.genRandNumber(15, 200),
+      comments: window.data.genRandNumber(1, commentsData.length-1),
+      description: descriptionData[window.data.genRandNumber(0, (descriptionData.length-1))],
+      commentsItems: commentsData
     };
-
-
   }
-  window.myArrayData = arrayData;
+
 })();
 
 function addDatatoElements() {
@@ -51,12 +54,11 @@ function addDatatoElements() {
 
     return newElement;
   }
-  /*window.myArrayData = generateData(); //Array of objects*/
-  for (var i = 0;i < myArrayData.length; i++) {
+  for (var i = 0; i < window.data.myArrayData.length; i++) {
     var newElem = creareElement();
-    newElem.querySelector('img').src = myArrayData[i].url;
-    newElem.querySelector('.picture-comments').textContent = myArrayData[i].comments;
-    newElem.querySelector('.picture-likes').textContent = myArrayData[i].likes;
+    newElem.querySelector('img').src = window.data.myArrayData[i].url;
+    newElem.querySelector('.picture-comments').textContent = window.data.myArrayData[i].comments;
+    newElem.querySelector('.picture-likes').textContent = window.data.myArrayData[i].likes;
     fragment.appendChild(newElem);
   }
   return fragment;
@@ -70,14 +72,46 @@ function insertElements() {
 
 //==================
 //generate big-picture structure function
-function genBigPicture() {
+function genBigPicture(picNum) {
   var globalBigPictureContainer = document.querySelector('.big-picture');
   var bigPicImg = globalBigPictureContainer.querySelector('.big-picture__img img');
-  console.log(bigPicImg);
-  bigPicImg.src = myArrayData[2].url;
+  var likesCount = globalBigPictureContainer.querySelector('.social__likes .likes-count');
+  var commentsCount = globalBigPictureContainer.querySelector('.comments-count');
+  var commentsAria = globalBigPictureContainer.querySelectorAll('.social__comment');
+  var commentsList = globalBigPictureContainer.querySelector('.social__comments');
+  var bigPicUserIcon = globalBigPictureContainer.querySelector('.social__picture');
+  var bigPicDescription = globalBigPictureContainer.querySelector('.social__caption');
+
+  bigPicImg.src = window.data.myArrayData[picNum].url;
+  likesCount.textContent = window.data.myArrayData[picNum].likes;
+  commentsCount.textContent = window.data.myArrayData[picNum].comments;
+  bigPicDescription.textContent = window.data.myArrayData[picNum].description;
+  bigPicUserIcon.src = "img/avatar-"+ window.data.genRandNumber(1, 6)+".svg";
+
+  //delete all 5 default comments from html
+  var newElement = commentsAria[0].cloneNode(true);
+  for (var i = 0; i < commentsAria.length; i++) {
+    commentsAria[i].remove();
+  }
+
+  //add the current number of comments
+
+
+  for (var n = 0; n < window.data.myArrayData[picNum].comments; n++){
+
+    newElement.querySelector('.social__picture').src = "img/avatar-"+ window.data.genRandNumber(1, 6)+".svg";
+    newElement.querySelector('.social__text').textContent = window.data.myArrayData[picNum].commentsItems[n];
+    commentsList.appendChild(newElement);
+    newElement = commentsAria[0].cloneNode(true);
+  }
+
+  console.log(window.data.myArrayData[picNum].comments);
+
+
+  //
 
 }
 //==================
 
 insertElements();
-genBigPicture();
+genBigPicture(1);
