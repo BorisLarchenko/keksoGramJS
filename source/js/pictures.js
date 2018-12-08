@@ -141,12 +141,6 @@ function addListenersToBigPicture() {
   for (var i=0; i < littlePicGalary.length; i++){
     closeBigPic(littlePicGalary[i],i);
   }
-
-
-
-
-
-
 };
 insertElements();
 /*genBigPicture(1);*/
