@@ -31,12 +31,6 @@
       commentsList.appendChild(newElement);
       newElement = commentsAria[0].cloneNode(true);
     }
-
-    console.log(window.data.myArrayData[picNum].comments);
-
-
-    //
-
   }
 
 //    html block that contains big picture has class .big-picture
@@ -52,7 +46,6 @@
 //  we should start genBigPicture(n) and delete .hidden class from .big-picture while clicking on the .picture;
   var picContainer = document.querySelector('.pictures');
   var littlePicGalary = picContainer.querySelectorAll('.picture');
-  console.log( littlePicGalary.length);
   //we need function that will remember variables
   function closeBigPic (picture, number){
     picture.addEventListener('click', function (evt) {
