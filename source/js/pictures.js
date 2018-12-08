@@ -113,5 +113,41 @@ function genBigPicture(picNum) {
 }
 //==================
 
+//add open and close eventListeners to big picture element
+function addListenersToBigPicture() {
+//    html block that contains big picture has class .big-picture
+//   cross on the big picture has the class .big-picture__cancel  .cancel and id #picture-cancel
+//  we should add  class .hidden to .big-picture while clickin on #picture-cancel element
+  var BigPic = document.querySelector('.big-picture');
+  var crossOnBigPic = document.getElementById('picture-cancel');
+  crossOnBigPic.addEventListener("click", function () {
+    BigPic.classList.add('hidden');
+  });
+  //all pictures have the same class .picture
+  //genBigPicture(n) function makes the n-th picture big
+//  we should start genBigPicture(n) and delete .hidden class from .big-picture while clicking on the .picture;
+  var picContainer = document.querySelector('.pictures');
+  var littlePicGalary = picContainer.querySelectorAll('.picture');
+  console.log( littlePicGalary.length);
+  //we need function that will remember variables
+  function closeBigPic (picture, number){
+    picture.addEventListener('click', function (evt) {
+      evt.preventDefault();
+      BigPic.classList.remove('hidden');
+      genBigPicture(number);
+    });
+
+  };
+  for (var i=0; i < littlePicGalary.length; i++){
+    closeBigPic(littlePicGalary[i],i);
+  }
+
+
+
+
+
+
+};
 insertElements();
-genBigPicture(1);
+/*genBigPicture(1);*/
+addListenersToBigPicture();
