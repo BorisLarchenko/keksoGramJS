@@ -46,16 +46,17 @@
 //  we should start genBigPicture(n) and delete .hidden class from .big-picture while clicking on the .picture;
   var picContainer = document.querySelector('.pictures');
   var littlePicGalary = picContainer.querySelectorAll('.picture');
-  //we need function that will remember variables
-  function closeBigPic (picture, number){
+  //we need function that will remember variables and
+
+  function openBigPic (picture, number){
     picture.addEventListener('click', function (evt) {
       evt.preventDefault();
       BigPic.classList.remove('hidden');
       genBigPicture(number);
     });
-
   };
+  //add event listeners to all pictures in gallery
   for (var i=0; i < littlePicGalary.length; i++){
-    closeBigPic(littlePicGalary[i],i);
+    openBigPic(littlePicGalary[i],i);
   }
 })();
