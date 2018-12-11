@@ -40,6 +40,7 @@
   var crossOnBigPic = document.getElementById('picture-cancel');
   crossOnBigPic.addEventListener("click", function () {
     BigPic.classList.add('hidden');
+   document.removeEventListener("keydown", onEscKeydown);
   });
   //all pictures have the same class .picture
   //genBigPicture(n) function makes the n-th picture big
@@ -47,16 +48,26 @@
   var picContainer = document.querySelector('.pictures');
   var littlePicGalary = picContainer.querySelectorAll('.picture');
   //we need function that will remember variables and
-
+  var onEscKeydown = function(evt) {
+    if (evt.keyCode == 27) {
+      BigPic.classList.add('hidden');
+    }
+  };
   function openBigPic (picture, number){
     picture.addEventListener('click', function (evt) {
       evt.preventDefault();
       BigPic.classList.remove('hidden');
       genBigPicture(number);
+      document.addEventListener("keydown", onEscKeydown);
     });
   };
   //add event listeners to all pictures in gallery
   for (var i=0; i < littlePicGalary.length; i++){
     openBigPic(littlePicGalary[i],i);
   }
+  // add event listener that colse fist picture while ESC is pressed
+
+
+
+
 })();
