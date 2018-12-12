@@ -18,13 +18,27 @@
   var uploadImageInput = mainUploadForm.querySelector('#upload-file');
   var uploaImageEffects =  mainUploadForm.querySelector('.upload-overlay');
 
+  var showUploadForm = function () {
+    uploaImageEffects.classList.remove('hidden');
+  };
+  var hideUploadForm = function () {
+    uploaImageEffects.classList.add('hidden');
+    uploadImageInput.value = '';
+  };
+  var onEscPressed = function (evt) {
+    window.utils.isEscKeyCode(evt, hideUploadForm)
+  };
+
+
   var uploadFormCross = mainUploadForm.querySelector('#upload-cancel');
   uploadImageInput.addEventListener('change', function () {
-    uploaImageEffects.classList.remove('hidden');
+    showUploadForm();
+    document.addEventListener('keydown', onEscPressed);
   });
 
   uploadFormCross.addEventListener('click', function () {
-    uploaImageEffects.classList.add('hidden');
+    hideUploadForm('hidden');
+    document.removeEventListener('keydown', onEscPressed);
   })
 
 })();
