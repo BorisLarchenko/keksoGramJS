@@ -39,7 +39,7 @@
   var BigPic = document.querySelector('.big-picture');
   var crossOnBigPic = document.getElementById('picture-cancel');
   crossOnBigPic.addEventListener("click", function () {
-    BigPic.classList.add('hidden');
+    hideBigPic();
    document.removeEventListener("keydown", onEscKeydown);
   });
   //all pictures have the same class .picture
@@ -48,11 +48,18 @@
   var picContainer = document.querySelector('.pictures');
   var littlePicGalary = picContainer.querySelectorAll('.picture');
   //we need function that will remember variables and
-  var onEscKeydown = function(evt) {
+  /*var onEscKeydown = function(evt) {
     if (evt.keyCode == 27) {
       BigPic.classList.add('hidden');
     }
+  };*/
+  var hideBigPic = function () {
+    BigPic.classList.add('hidden');
   };
+  var onEscKeydown = function (evt) {
+    window.utils.isEscKeyCode(evt, hideBigPic);
+  };
+
   function openBigPic (picture, number){
     picture.addEventListener('click', function (evt) {
       evt.preventDefault();
