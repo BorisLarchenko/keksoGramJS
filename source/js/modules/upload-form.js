@@ -14,6 +14,17 @@
   * 6. add evet listener evt click on #upload-cancel to add
   * .hidden class to .upload-overlay
   * */
+  var mainUploadForm = document.querySelector('.upload-form');
+  var uploadImageInput = mainUploadForm.querySelector('#upload-file');
+  var uploaImageEffects =  mainUploadForm.querySelector('.upload-overlay');
 
+  var uploadFormCross = mainUploadForm.querySelector('#upload-cancel');
+  uploadImageInput.addEventListener('change', function () {
+    uploaImageEffects.classList.remove('hidden');
+  });
+
+  uploadFormCross.addEventListener('click', function () {
+    uploaImageEffects.classList.add('hidden');
+  })
 
 })();
