@@ -24,7 +24,18 @@
     elem.addEventListener('click', onInputClick);
   };
   var pictureEffect = function(param) {
-    return "brightness(" + param*3/100 + ")";
+    return "contrast(" + param*3/100 + ")";
+  };
+  var pictureStartEffect = function () {
+    var x = sliderPin.getBoundingClientRect().x;
+    var xMin = thinsliderLine.getBoundingClientRect().left;
+    var xMax = thinsliderLine.getBoundingClientRect().right;
+    var startX = Math.round((x -xMin)/(xMax - xMin)*100);
+    if (startX < 0) {
+      startX = 0
+    }
+    console.log(startX);
+    return startX;
   };
 
   var onInputClick = function () {
@@ -34,19 +45,25 @@
         pictureEffect = function (param) {
           return "grayscale(" + param/100+ ")";
         };
+
         console.log('hi chrome!!!');
+        picture.style.filter = pictureEffect(pictureStartEffect());
         break;
       case 'sepia':
         pictureEffect = function (param) {
           return "sepia(" + param/100+ ")";
         };
+
         console.log('hi sepia');
+        picture.style.filter = pictureEffect(pictureStartEffect());
+
         break;
       case 'marvin':
         pictureEffect = function (param) {
           return "invert(" + param + "%)";
         };
         console.log('hi marvin');
+        picture.style.filter = pictureEffect(pictureStartEffect());
         break;
       case 'phobos':
 
@@ -54,18 +71,22 @@
           return "blur(" + param*3/100 + "px)";
         };
         console.log('hi phobos');
+        picture.style.filter = pictureEffect(pictureStartEffect());
         break;
       case 'heat':
         pictureEffect = function (param) {
           return "brightness(" + param*3/100 + ")";
         };
         console.log('hi hieat');
+        picture.style.filter = pictureEffect(pictureStartEffect());
         break;
       default:
         pictureEffect = function (param) {
-          return "grayscale(" + param/100+ ")";
+          return "contrast(" + param/100+ ")";
         };
         console.log('hi none');
+        picture.style.filter = pictureEffect(pictureStartEffect());
+
     }
   };
   for (var i=0; i<inputsArray.length; i++) {
@@ -75,7 +96,7 @@
 
   sliderPin.addEventListener('mousedown', function(evt) {
     evt.preventDefault();
-    var x = sliderPin.getBoundingClientRect().x;
+
     var xMin = thinsliderLine.getBoundingClientRect().left;
     var xMax = thinsliderLine.getBoundingClientRect().right;
     var onMouseMove = function(moveEvt) {
