@@ -39,6 +39,7 @@
   uploadFormCross.addEventListener('click', function () {
     hideUploadForm('hidden');
     document.removeEventListener('keydown', onEscPressed);
-  })
+  });
+
 
 })();
