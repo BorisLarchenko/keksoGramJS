@@ -13,6 +13,7 @@
   var thinsliderLine = mainContainer.querySelector('.upload-effect-level-line');
   var thickSliderLine = mainContainer.querySelector('.upload-effect-level');
   var progresLine = mainContainer.querySelector('.upload-effect-level-val');
+  var picture = mainContainer.querySelector('.effect-image-preview');
 
   sliderPin.addEventListener('mousedown', function(evt) {
     evt.preventDefault();
@@ -28,6 +29,7 @@
 
       sliderPin.style.left = positionLeft + '%';
       progresLine.style.width = positionLeft + '%';
+      picture.style.filter = "brightness(" + positionLeft*2 + '%' + ")";
     };
     var onMouseUp = function() {
       thickSliderLine.removeEventListener('mousemove', onMouseMove);
