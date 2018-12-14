@@ -28,9 +28,13 @@
 
       sliderPin.style.left = positionLeft + '%';
       progresLine.style.width = positionLeft + '%';
-      console.log(sliderPin.style.left);
+    };
+    var onMouseUp = function() {
+      thickSliderLine.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseup', onMouseUp);
     };
     thickSliderLine.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
   });
 
 
