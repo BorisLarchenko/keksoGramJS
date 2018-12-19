@@ -22,7 +22,7 @@
   <input type="radio" id="filter-random" class="filters-radio" name="filter" value="random">
   <label for="filter-random" class="filters-item">Случайные</label>
 </form>
-
+<!--Form for downloading imagies-->
   <form class="upload-form" id="upload-select-image" method="post"
       enctype="multipart/form-data"
       autocomplete="off">
@@ -34,20 +34,26 @@
   <div class="upload-overlay  hidden">
     <div class="upload-effect">
       <div class="upload-effect__container">
+
+        <!--resizing buttons and input for upload image-->
         <fieldset class="upload-resize-controls">
           <button type="button"
                   class="upload-resize-control upload-resize-controls-button upload-resize-controls-button-dec">–
           </button><!--
-          --><input type="text" class="upload-resize-control upload-resize-controls-value" value="50%" readonly title="Image Scale" name="scale"/><!--
+          --><input type="text" class="upload-resize-control upload-resize-controls-value" value="100%" readonly title="Image Scale" name="scale"/><!--
           --><button type="button"
                   class="upload-resize-control upload-resize-controls-button upload-resize-controls-button-inc">+
           </button>
         </fieldset>
 
+<!--our image for uploading-->
+        <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
         <div class="upload-form-preview">
           <div></div>
           <img src="img/upload-default-image.jpg" class="effect-image-preview">
         </div>
+        <!--++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+<!--end of our image for uploading-->
 
         <fieldset class="upload-effect-controls">
           <div class="upload-effect-level">
