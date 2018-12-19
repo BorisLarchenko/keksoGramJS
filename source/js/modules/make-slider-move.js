@@ -119,6 +119,50 @@
     document.addEventListener('mouseup', onMouseUp);
   });
 
+//------------------------------------------------------
+//  We want to add scale to big picture now.
+//  Algorithm:
+//  1) find button+, button- and dlock with value in % and picture
+//  button+ has (.upload-resize-controls-button-dec)  class
+//value in % has (.upload-resize-controls-value) class
+//  button- has (.upload-resize-controls-button-inc) class
+//  picture has (.effect-image-preview) class
+// 2) add evtListeners to button+ and button-
+//  we have 4 steps in scale 25%, 50%, 75%, and 100% and user can not edit it
+//  we should add listeners as functions because we will remove them in some conditions
+//if value 100% we should hide button+ and remove listener+ if value 25% we should hide button- and remove listener-
+//  let's try to do it
+
+  //Temporary enable this var. Delete afrter test
+  var mainContainer = document.querySelector('.upload-effect__container');
+
+
+var buttonIncScale = mainContainer.querySelector('.upload-resize-controls-button-inc');
+var buttonDecScale = mainContainer.querySelector('.upload-resize-controls-button-dec');
+var valueScale = mainContainer.querySelector('.upload-resize-controls-value');
+//we have stored image in picture variable
+  var onButtonIncClick = function (evt) {
+    evt.preventDefault();
+    var currentScale = parseInt(valueScale.value.slice(0, -1));
+    currentScale += 25;
+    if (currentScale >= 100) {buttonIncScale.classList.add('justhide')}
+    if (currentScale > 0) {buttonDecScale.classList.remove('justhide')}
+    valueScale.value = currentScale + '%';
+
+  };
+
+  var onButtonDecClick = function (evt) {
+    evt.preventDefault();
+    var currentScale = parseInt(valueScale.value.slice(0, -1));
+    currentScale -= 25;
+    if (currentScale <= 0) {buttonDecScale.classList.add('justhide')}
+    if (currentScale <100) {buttonIncScale.classList.remove('justhide')}
+    valueScale.value = currentScale + '%';
+  };
+
+
+buttonIncScale.addEventListener('click', onButtonIncClick);
+buttonDecScale.addEventListener('click', onButtonDecClick);
 
 
 

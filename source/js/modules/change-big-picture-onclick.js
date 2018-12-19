@@ -73,8 +73,4 @@
     openBigPic(littlePicGalary[i],i);
   }
   // add event listener that colse fist picture while ESC is pressed
-
-
-
-
 })();
