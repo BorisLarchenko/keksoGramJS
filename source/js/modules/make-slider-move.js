@@ -147,6 +147,7 @@ var valueScale = mainContainer.querySelector('.upload-resize-controls-value');
     currentScale += 25;
     if (currentScale >= 100) {buttonIncScale.classList.add('justhide')}
     if (currentScale > 0) {buttonDecScale.classList.remove('justhide')}
+    picture.style.transform = 'scale(' + currentScale/100 + ')';
     valueScale.value = currentScale + '%';
 
   };
@@ -157,6 +158,7 @@ var valueScale = mainContainer.querySelector('.upload-resize-controls-value');
     currentScale -= 25;
     if (currentScale <= 0) {buttonDecScale.classList.add('justhide')}
     if (currentScale <100) {buttonIncScale.classList.remove('justhide')}
+    picture.style.transform = 'scale(' + currentScale/100 + ')';
     valueScale.value = currentScale + '%';
   };
 
