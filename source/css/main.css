@@ -27,6 +27,11 @@ body {
 .hidden {
   display: none;
 }
+.justhide {
+	visibility: hidden;
+}
+
+
 .visually-hidden {
   position: absolute;
 
