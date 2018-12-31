@@ -144,22 +144,23 @@ var valueScale = mainContainer.querySelector('.upload-resize-controls-value');
   var onButtonIncClick = function (evt) {
     evt.preventDefault();
     var currentScale = parseInt(valueScale.value.slice(0, -1));
-    currentScale += 25;
     if (currentScale >= 100) {buttonIncScale.classList.add('justhide')}
-    if (currentScale > 0) {buttonDecScale.classList.remove('justhide')}
-    picture.style.transform = 'scale(' + currentScale/100 + ')';
-    valueScale.value = currentScale + '%';
-
+      else {currentScale += 25;
+      picture.style.transform = 'scale(' + currentScale/100 + ')';
+      valueScale.value = currentScale + '%';}
+    if (currentScale >= 100) {buttonIncScale.classList.add('justhide')}
+    if (currentScale > 25) {buttonDecScale.classList.remove('justhide')}
   };
 
   var onButtonDecClick = function (evt) {
     evt.preventDefault();
     var currentScale = parseInt(valueScale.value.slice(0, -1));
-    currentScale -= 25;
-    if (currentScale <= 0) {buttonDecScale.classList.add('justhide')}
+    if (currentScale <= 25) {buttonDecScale.classList.add('justhide')}
+      else {currentScale -= 25;
+      picture.style.transform = 'scale(' + currentScale/100 + ')';
+      valueScale.value = currentScale + '%';}
+    if (currentScale <= 25) {buttonDecScale.classList.add('justhide')}
     if (currentScale <100) {buttonIncScale.classList.remove('justhide')}
-    picture.style.transform = 'scale(' + currentScale/100 + ')';
-    valueScale.value = currentScale + '%';
   };
 
 

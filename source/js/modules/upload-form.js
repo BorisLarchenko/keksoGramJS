@@ -17,6 +17,7 @@
   var mainUploadForm = document.querySelector('.upload-form');
   var uploadImageInput = mainUploadForm.querySelector('#upload-file');
   var uploaImageEffects =  mainUploadForm.querySelector('.upload-overlay');
+  var picture = mainUploadForm.querySelector('.effect-image-preview');
 
   var showUploadForm = function () {
     uploaImageEffects.classList.remove('hidden');
@@ -24,6 +25,7 @@
   var hideUploadForm = function () {
     uploaImageEffects.classList.add('hidden');
     uploadImageInput.value = '';
+
   };
   var onEscPressed = function (evt) {
     window.utils.isEscKeyCode(evt, hideUploadForm)
@@ -38,6 +40,7 @@
 
   uploadFormCross.addEventListener('click', function () {
     hideUploadForm('hidden');
+    picture.style.transform = 'scale(1)';
     document.removeEventListener('keydown', onEscPressed);
   });
 
