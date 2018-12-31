@@ -364,6 +364,7 @@ body {
 .effect-image-preview {
   vertical-align: middle;
   filter: brightness(40%);
+  /*transform: scale(0.5);*/
 }
 
 .upload-effect-controls input[type=radio] {
