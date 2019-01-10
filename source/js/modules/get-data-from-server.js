@@ -2,11 +2,19 @@
   window.getDataFromServer = function (url, onError, onSucces) {
     var xhr = new XMLHttpRequest();
     /*xhr.responseType = 'json';*/
-
+    //0_block declaring functions that parses response or errors in request
+    onSucces = function(data) {
+      var jsonResponce = data;
+      console.log(jsonResponce);
+    };
+    onError = function(errorMessage){
+      console.log(errorMessage);
+    };
+    //0_block is finished
     xhr.addEventListener('load', function () {
       /*console.log (JSON.parse(xhr.response+'hello'));*/
       //1_block in this block we are parsing errors in response body
-      try {JSON.parse(xhr.response);}
+      try {console.log (JSON.parse(xhr.response));}
       catch (err) {
         console.log(err.message);
       }
@@ -15,7 +23,7 @@
       var error;
       switch (xhr.status){
         case 200:
-          onSucces(JSON.parse(xhr.response));
+          onSucces(xhr.response);
           break;
         case 404:
           console.log('Not found url');
@@ -42,7 +50,7 @@
     xhr.timeout = 1000; //timeout in milli seconds
     //3_block is finished
 
-    xhr.open('GET', url);
+    xhr.open('GET', 'https://api.github.com/users/BorisLarchenko');
     xhr.send();
   }
 })();

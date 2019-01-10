@@ -9,11 +9,11 @@
     var bigPicUserIcon = globalBigPictureContainer.querySelector('.social__picture');
     var bigPicDescription = globalBigPictureContainer.querySelector('.social__caption');
 
-    bigPicImg.src = window.serverData[picNum].url;
-    likesCount.textContent = window.serverData[picNum].likes;
-    commentsCount.textContent = window.serverData[picNum].comments;
-    bigPicDescription.textContent = window.serverData[picNum].description;
-    bigPicUserIcon.src = "img/avatar-"+ 1+".svg";
+    bigPicImg.src = window.data.myArrayData[picNum].url;
+    likesCount.textContent = window.data.myArrayData[picNum].likes;
+    commentsCount.textContent = window.data.myArrayData[picNum].comments;
+    bigPicDescription.textContent = window.data.myArrayData[picNum].description;
+    bigPicUserIcon.src = "img/avatar-"+ window.data.genRandNumber(1, 6)+".svg";
 
     //delete all 5 default comments from html
     var newElement = commentsAria[0].cloneNode(true);
@@ -24,10 +24,10 @@
     //add the current number of comments
 
 
-    for (var n = 0; n < window.serverData[picNum].comments; n++){
+    for (var n = 0; n < window.data.myArrayData[picNum].comments; n++){
 
-      newElement.querySelector('.social__picture').src = window.serverData[picNum].comments[n].avatar;
-      newElement.querySelector('.social__text').textContent = window.serverData[picNum].comments[n].message;
+      newElement.querySelector('.social__picture').src = "img/avatar-"+ window.data.genRandNumber(1, 6)+".svg";
+      newElement.querySelector('.social__text').textContent = window.data.myArrayData[picNum].commentsItems[n];
       commentsList.appendChild(newElement);
       newElement = commentsAria[0].cloneNode(true);
     }
