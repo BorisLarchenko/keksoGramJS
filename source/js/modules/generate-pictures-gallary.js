@@ -4,8 +4,6 @@
 
     var onSucces = function(data) {
       var fragment = document.createDocumentFragment();
-      /*window.serverData = data;
-      console.log (window.serverData.length);*/
       function creareElement() {
         var templateSource = document.querySelector('#picture-template');
         var elementForCreation = templateSource.content.querySelector('.picture');

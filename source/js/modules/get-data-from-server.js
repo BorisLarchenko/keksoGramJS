@@ -4,7 +4,7 @@
     /*xhr.responseType = 'json';*/
 
     xhr.addEventListener('load', function () {
-      /*console.log (JSON.parse(xhr.response+'hello'));*/
+
       //1_block in this block we are parsing errors in response body
       try {JSON.parse(xhr.response);}
       catch (err) {
@@ -30,7 +30,6 @@
         onError(error);
       }
       //2_block is finished
-      console.log(xhr.status + "hello" + xhr.statusText);
     });
     //3_block parse errors that connect with internet connection and timeouts
     xhr.addEventListener('error', function () {
