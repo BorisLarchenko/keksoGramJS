@@ -27,7 +27,7 @@
       //add the current number of comments
 
 
-      for (var n = 0; n < data[picNum].comments.length; n++){
+      for (var n = 0; (n < data[picNum].comments.length && n < 5); n++){
 
         newElement.querySelector('.social__picture').src = data[picNum].comments[n].avatar;
         newElement.querySelector('.social__text').textContent = data[picNum].comments[n].message;
