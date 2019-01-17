@@ -67,6 +67,4 @@
   commentInput.addEventListener('blur', function (){
     document.addEventListener('keydown', onEscPressed);
   });
-
-
 })();
