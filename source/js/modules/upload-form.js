@@ -43,6 +43,30 @@
     picture.style.transform = 'scale(1)';
     document.removeEventListener('keydown', onEscPressed);
   });
+//  Prevent to hide form on esc pressed if focus on the comment input
+//  find comment input upload-form-description
+//  add evet listener on focus remove event onEscPressed
+//  add evet listener on blur add event onEscPressed
+  var commentInput = mainUploadForm.querySelector('.upload-form-description');
+  commentInput.addEventListener('focus', function (){
+    document.removeEventListener('keydown', onEscPressed);
+  });
+  commentInput.addEventListener('blur', function (){
+    document.addEventListener('keydown', onEscPressed);
+  });
+
+
+  //  Prevent to hide form on esc pressed if focus on the hashtag input
+//  find comment input upload-form-hashtags
+//  add evet listener on focus remove event onEscPressed
+//  add evet listener on blur add event onEscPressed
+  var commentInput = mainUploadForm.querySelector('.upload-form-hashtags');
+  commentInput.addEventListener('focus', function (){
+    document.removeEventListener('keydown', onEscPressed);
+  });
+  commentInput.addEventListener('blur', function (){
+    document.addEventListener('keydown', onEscPressed);
+  });
 
 
 })();
