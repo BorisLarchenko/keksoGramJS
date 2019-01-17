@@ -41,6 +41,7 @@
   uploadFormCross.addEventListener('click', function () {
     hideUploadForm('hidden');
     picture.style.transform = 'scale(1)';
+    mainUploadForm.reset();
     document.removeEventListener('keydown', onEscPressed);
   });
 //  Prevent to hide form on esc pressed if focus on the comment input
