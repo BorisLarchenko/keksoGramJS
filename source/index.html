@@ -23,7 +23,7 @@
   <label for="filter-random" class="filters-item">Случайные</label>
 </form>
 <!--Form for downloading imagies-->
-  <form class="upload-form" id="upload-select-image" method="post"
+  <form class="upload-form" id="upload-select-image" action="https://js.dump.academy/kekstagram" method="post"
       enctype="multipart/form-data"
       autocomplete="off">
   <div class="upload-image">
@@ -100,7 +100,7 @@
           </label>
         </fieldset>
 
-        <input class="upload-form-hashtags" name="hashtags" placeholder="#хэш-тег">
+        <input class="upload-form-hashtags" name="hashtags" placeholder="#хэш-тег" pattern="^#[A-Za-zА-Яа-я]{1,20}([ ][#][A-Za-zА-Яа-я]{1,20}){0,4}">
 
         <textarea class="upload-form-description" name="description" placeholder="Ваш комментарий..." maxlength="140"></textarea>
 
