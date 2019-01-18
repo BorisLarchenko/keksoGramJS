@@ -61,11 +61,34 @@
 //  find comment input upload-form-hashtags
 //  add evet listener on focus remove event onEscPressed
 //  add evet listener on blur add event onEscPressed
-  var commentInput = mainUploadForm.querySelector('.upload-form-hashtags');
-  commentInput.addEventListener('focus', function (){
+  var hashtagInput = mainUploadForm.querySelector('.upload-form-hashtags');
+  hashtagInput.addEventListener('focus', function (){
     document.removeEventListener('keydown', onEscPressed);
   });
-  commentInput.addEventListener('blur', function (){
+  hashtagInput.addEventListener('blur', function (){
     document.addEventListener('keydown', onEscPressed);
   });
+//  Add form validation for .upload-form-hashtags input
+//  add event listner on invalid event
+//  add setCustomValidity method to hashtags input
+  hashtagInput.addEventListener('invalid', function (evt) {
+
+    if (hashtagInput.validity.patternMismatch) {
+      hashtagInput.setCustomValidity('PatternMismatch: 1.Start any tag from # symbol, 2. Use not more than 5 tags, 3. One space between tags 4.Each hashtag has not more than ');
+    } else {
+      hashtagInput.setCustomValidity('');
+    }
+  });
+  hashtagInput.addEventListener('input', function (evt) {
+    var target = evt.target;
+    console.log(target.value);
+    console.log(target.value.charAt(0));
+    if (target.value.charAt(0) !== '#') {
+      target.setCustomValidity("Start any tag from # symbol");
+    } else {
+      target.setCustomValidity('');
+    }
+  });
+
+
 })();
