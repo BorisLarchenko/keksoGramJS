@@ -41,8 +41,70 @@
   uploadFormCross.addEventListener('click', function () {
     hideUploadForm('hidden');
     picture.style.transform = 'scale(1)';
+    mainUploadForm.reset();
     document.removeEventListener('keydown', onEscPressed);
   });
+//  Prevent to hide form on esc pressed if focus on the comment input
+//  find comment input upload-form-description
+//  add evet listener on focus remove event onEscPressed
+//  add evet listener on blur add event onEscPressed
+  var commentInput = mainUploadForm.querySelector('.upload-form-description');
+  commentInput.addEventListener('focus', function (){
+    document.removeEventListener('keydown', onEscPressed);
+  });
+  commentInput.addEventListener('blur', function (){
+    document.addEventListener('keydown', onEscPressed);
+  });
+
+
+  //  Prevent to hide form on esc pressed if focus on the hashtag input
+//  find comment input upload-form-hashtags
+//  add evet listener on focus remove event onEscPressed
+//  add evet listener on blur add event onEscPressed
+  var hashtagInput = mainUploadForm.querySelector('.upload-form-hashtags');
+  hashtagInput.addEventListener('focus', function (){
+    document.removeEventListener('keydown', onEscPressed);
+  });
+  hashtagInput.addEventListener('blur', function (){
+    document.addEventListener('keydown', onEscPressed);
+  });
+//  Add form validation for .upload-form-hashtags input
+//  add event listner on invalid event
+//  add setCustomValidity method to hashtags input
+  hashtagInput.addEventListener('invalid', function (evt) {
+
+    if (hashtagInput.validity.patternMismatch) {
+      hashtagInput.setCustomValidity('PatternMismatch: 1.Start any tag from # symbol, 2. Use not more than 5 tags, 3. One space between tags 4.Each hashtag has not more than ');
+    } else {
+      hashtagInput.setCustomValidity('');
+    }
+  });
+  hashtagInput.addEventListener('input', function (evt) {
+    var target = evt.target;
+    console.log(target.value);
+    console.log(target.value.charAt(0));
+    if (target.value.charAt(0) !== '#') {
+      target.setCustomValidity("Start any tag from # symbol");
+    } else {
+      target.setCustomValidity('');
+    }
+  });
+
+
+  var onSucces = function() {
+    console.log('success');
+    hideUploadForm('hidden');
+    picture.style.transform = 'scale(1)';
+    mainUploadForm.reset();
+    document.removeEventListener('keydown', onEscPressed);
+  };
+//add event listener to form upload submit
+  mainUploadForm.addEventListener('submit', function (evt) {
+    var FD = new FormData(mainUploadForm);
+    window.getDataFromServer.sendData(FD, onSucces);
+    evt.preventDefault();
+  })
+
 
 
 })();

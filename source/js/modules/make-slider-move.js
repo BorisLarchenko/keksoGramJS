@@ -6,7 +6,7 @@
   * 2.2. We should check x-min(.getBoundingClientRect().left) and x-max(.getBoundingClientRect().right) coordinate of the slider-line .upload-effect-level-line
   *
   * 3. we should add on-mouse-move evt for the black line of slider .upload-effect-level.
-  * 3.1. in this event we need to check x coordinate of cursor and eaquels them to the coordinate of slider-pin we should also translate the slider coordinate to the left property of the slider pin */
+  * 3.1. in this event we need to check x coordinate of cursor and equels them to the coordinate of slider-pin we should also translate the slider coordinate to the left property of the slider pin */
 
   var mainContainer = document.querySelector('.upload-effect__container');
   var sliderPin = mainContainer.querySelector('.upload-effect-level-pin');
@@ -34,19 +34,16 @@
     if (startX < 0) {
       startX = 0
     }
-    console.log(startX);
     return startX;
   };
 
   var onInputClick = function () {
-    console.log('I was clicked');
     switch (this.value) {
       case 'chrome':
         pictureEffect = function (param) {
           return "grayscale(" + param/100+ ")";
         };
 
-        console.log('hi chrome!!!');
         picture.style.filter = pictureEffect(pictureStartEffect());
         break;
       case 'sepia':
@@ -54,7 +51,6 @@
           return "sepia(" + param/100+ ")";
         };
 
-        console.log('hi sepia');
         picture.style.filter = pictureEffect(pictureStartEffect());
 
         break;
@@ -62,7 +58,6 @@
         pictureEffect = function (param) {
           return "invert(" + param + "%)";
         };
-        console.log('hi marvin');
         picture.style.filter = pictureEffect(pictureStartEffect());
         break;
       case 'phobos':
@@ -70,21 +65,18 @@
         pictureEffect = function (param) {
           return "blur(" + param*3/100 + "px)";
         };
-        console.log('hi phobos');
         picture.style.filter = pictureEffect(pictureStartEffect());
         break;
       case 'heat':
         pictureEffect = function (param) {
           return "brightness(" + param*3/100 + ")";
         };
-        console.log('hi hieat');
         picture.style.filter = pictureEffect(pictureStartEffect());
         break;
       default:
         pictureEffect = function (param) {
           return "contrast(" + param/100+ ")";
         };
-        console.log('hi none');
         picture.style.filter = pictureEffect(pictureStartEffect());
 
     }
