@@ -91,4 +91,20 @@
   });
 
 
+  var onSucces = function() {
+    console.log('success');
+    hideUploadForm('hidden');
+    picture.style.transform = 'scale(1)';
+    mainUploadForm.reset();
+    document.removeEventListener('keydown', onEscPressed);
+  };
+//add event listener to form upload submit
+  mainUploadForm.addEventListener('submit', function (evt) {
+    var FD = new FormData(mainUploadForm);
+    window.getDataFromServer.sendData(FD, onSucces);
+    evt.preventDefault();
+  })
+
+
+
 })();

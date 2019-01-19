@@ -82,7 +82,7 @@
   var onError = function(errorMessage){
     console.log(errorMessage);
   };
-  window.getDataFromServer('https://js.dump.academy/kekstagram/data', onError, onSucces);
+  window.getDataFromServer.getData('https://js.dump.academy/kekstagram/data', onError, onSucces);
 
 
 
