@@ -28,7 +28,7 @@
 
   };
   var onEscPressed = function (evt) {
-    window.utils.isEscKeyCode(evt, hideUploadForm)
+     window.utils.isEsc.isEscKeyCode(evt, hideUploadForm);
   };
 
 

@@ -18,6 +18,10 @@
       }
       myContaner.appendChild(fragment);
 
+    //  just to test map utils window.utils.mapFunction
+    //  uncoment this code if you want to test this utils method
+      /*var nObj = data.map(window.utils.mapFunction);
+      console.log(nObj);*/
     };
     var onError = function(errorMessage){
       console.log(errorMessage);

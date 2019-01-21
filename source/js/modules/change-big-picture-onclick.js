@@ -56,7 +56,7 @@
       BigPic.classList.add('hidden');
     };
     var onEscKeydown = function (evt) {
-      window.utils.isEscKeyCode(evt, hideBigPic);
+      window.utils.isEsc.isEscKeyCode(evt, hideBigPic);
     };
 
     function openBigPic (picture, number){
