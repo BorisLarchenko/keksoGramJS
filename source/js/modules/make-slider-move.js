@@ -92,15 +92,14 @@
     var xMin = thinsliderLine.getBoundingClientRect().left;
     var xMax = thinsliderLine.getBoundingClientRect().right;
     var onMouseMove = function(moveEvt) {
-      if (moveEvt.screenX < xMin) {
+      if (moveEvt.clientX < xMin) {
         var positionLeft = 0;
-      } else if (moveEvt.screenX > xMax){
+      } else if (moveEvt.clientX > xMax){
         positionLeft = 100
-      } else {positionLeft = Math.round((moveEvt.screenX - xMin)/(xMax -xMin)*100)}
+      } else {positionLeft = Math.round((moveEvt.clientX - xMin)/(xMax -xMin)*100)}
 
       sliderPin.style.left = positionLeft + '%';
       progresLine.style.width = positionLeft + '%';
-      console.log(picture.style.filter);
       picture.style.filter = pictureEffect(positionLeft);
     };
     var onMouseUp = function() {
