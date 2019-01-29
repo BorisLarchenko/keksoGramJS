@@ -89,10 +89,15 @@
       target.setCustomValidity('');
     }
   });
-
+  //I am going to add function that hide .upload-image label after image submit
+  //We need to add this function to onSucces function
+  var hideUpladImgButton = function () {
+    var uploadImgButton = mainUploadForm.querySelector('.upload-image');
+    uploadImgButton.classList.add('hidden');
+  };
 
   var onSucces = function() {
-    console.log('success');
+    hideUpladImgButton();
     hideUploadForm('hidden');
     picture.style.transform = 'scale(1)';
     mainUploadForm.reset();
