@@ -95,8 +95,14 @@
     var uploadImgButton = mainUploadForm.querySelector('.upload-image');
     uploadImgButton.classList.add('hidden');
   };
+  //one more function that shows filters form .filters after successful upload of the image
+  var showFilters = function () {
+    var formFilters = document.querySelector('.filters');
+    formFilters.classList.remove('hidden');
+  };
 
   var onSucces = function() {
+    showFilters();
     hideUpladImgButton();
     hideUploadForm('hidden');
     picture.style.transform = 'scale(1)';
