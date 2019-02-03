@@ -13,28 +13,36 @@
   var random = document.querySelector("label[for=filter-random");
 
 
-
+  var lastTimeout;
 
   var showMostLikedPic = function () {
-    function onSucces(data) {
-      var startObj = data;
-      var mostLikedObj = startObj.sort(function (obj1, obj2) {
-        return obj2.likes - obj1.likes;
-      });
-      console.log(mostLikedObj);
-      console.log(startObj);
+    console.log('CLickedMostLiked');
 
-      //+  delete all little pictures
-      deleteLittlepic();
-      /*- delete all little pictures*/
-      window.utils.render(mostLikedObj);
+    function myTimer500() {
+      function onSucces(data) {
+        var startObj = data;
+        var mostLikedObj = startObj.sort(function (obj1, obj2) {
+          return obj2.likes - obj1.likes;
+        });
+        console.log('send&render after 500ms');
+        //+  delete all little pictures
+        deleteLittlepic();
+        /*- delete all little pictures*/
+        window.utils.render(mostLikedObj);
 
+      }
+      var onError = function(errorMessage){
+        console.log(errorMessage);
+      };
+
+      window.getDataFromServer.getData('https://js.dump.academy/kekstagram/data', onError, onSucces);
     }
-    var onError = function(errorMessage){
-      console.log(errorMessage);
-    };
 
-    window.getDataFromServer.getData('https://js.dump.academy/kekstagram/data', onError, onSucces);
+    if (lastTimeout) {window.clearTimeout(lastTimeout);}
+    lastTimeout = window.setTimeout(function () {
+      myTimer500();
+    }, 500);
+
   };
   var showMostCommentedPic = function () {
     function onSucces(data) {
