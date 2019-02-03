@@ -15,7 +15,7 @@
     mapFunction: function (it, index, arr) {
       console.log(it);
       console.log(index);
-      return it + 1;
+      return it.likes;
     }
   }
 })();
